@@ -1,20 +1,24 @@
-#
 Summary:	Sony Vaio SPIC Daemon (enables jog dial mouse wheel)
+Summary(pl):	Demon SPIC dla Sony Vaio (traktuj±cy pokrêt³o jog dial jako kó³ko myszy)
 Name:		sonypid
 Version:	1.9.1
 Release:	1
 License:	GPL
 Group:		Applications/System
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Source0:	http://popies.net/sonypi/%{name}-%{version}.tar.bz2
 # Source0-md5:	d27cf0f34132f1b0b900bd0415a79181
 URL:		http://popies.net/sonypi/
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This daemon enables the jog dial on a Sony VAIO as a mouse wheel.
 
+%description -l pl
+Ten demon umo¿liwia traktowanie pokrêt³a jog dial Sony VAIO jako kó³ka
+myszy.
+
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %{__make}
@@ -26,8 +30,10 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sbindir}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/X11/xinit/xinitrc.d
+
 install sonypid $RPM_BUILD_ROOT%{_sbindir}
 install sonypid.xinitrc $RPM_BUILD_ROOT%{_sysconfdir}/X11/xinit/xinitrc.d/sonypid
+
 %post
 grep 'alias char-major-10-250 sonypi' /etc/modules.conf > /dev/null
 RETVAL=$?
@@ -38,6 +44,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%attr(0755,root,root) %{_sbindir}/sonypid
-%attr(0755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/sonypid
 %doc AUTHORS CHANGES
+%attr(755,root,root) %{_sbindir}/sonypid
+%attr(755,root,root) %{_sysconfdir}/X11/xinit/xinitrc.d/sonypid
