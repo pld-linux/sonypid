@@ -1,5 +1,5 @@
 Summary:	Sony Vaio SPIC Daemon (enables jog dial mouse wheel)
-Summary(pl.UTF-8):   Demon SPIC dla Sony Vaio (traktujący pokrętło jog dial jako kółko myszy)
+Summary(pl.UTF-8):	Demon SPIC dla Sony Vaio (traktujący pokrętło jog dial jako kółko myszy)
 Name:		sonypid
 Version:	1.9.1
 Release:	1
